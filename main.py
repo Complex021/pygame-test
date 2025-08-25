@@ -3,6 +3,9 @@ from constants import *
 from player import *
 def main():
     pygame.init
+    updateables = pygame.sprite.Group()
+    drawables = pygame.sprite.Group()
+    Player.containers = (updateables, drawables)
     black = pygame.Color('black')
     dt = 0
     clock = pygame.time.Clock()
@@ -15,9 +18,10 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        PlayerCharacter.update(dt)
+        updateables.update(dt)
         pygame.Surface.fill(screen, black)
-        PlayerCharacter.draw(screen)
+        for entity in drawables:
+            entity.draw(screen)
         pygame.display.flip()
         dt = clock.tick(60) / 1000
       
