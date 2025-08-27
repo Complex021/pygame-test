@@ -9,9 +9,11 @@ def main():
     updateables = pygame.sprite.Group()
     drawables = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
     Player.containers = (updateables, drawables)
     Asteroid.containers = (asteroids, updateables, drawables)
     AsteroidField.containers = (updateables)
+    Shot.containers = (updateables, drawables, shots)
     field = AsteroidField()
     black = pygame.Color('black')
     dt = 0
